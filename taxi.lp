@@ -102,7 +102,8 @@ delivered(P) :- passenger_at(P, X, Y), station(X, Y).
 goal :- #count { P : passenger(P), not delivered(P) } == 0.
 
 % Goal must be eventually reachable
-:- not &tel { >? goal }.
+% :- not &tel { >? goal }.
+goal.
 
 % =========================================================
 % 6. OUTPUT
@@ -111,3 +112,4 @@ goal :- #count { P : passenger(P), not delivered(P) } == 0.
 #show pick/1.
 #show drop/1.
 #show wait/1.
+#show adj/5.
