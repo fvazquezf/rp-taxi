@@ -97,13 +97,14 @@ person_pos(P, X, Y) :- in_taxi(P, T), at(T, X, Y).
 % =========================================================
 % 5. GOAL
 % =========================================================
-
 delivered(P) :- passenger_at(P, X, Y), station(X, Y).
 goal :- #count { P : passenger(P), not delivered(P) } == 0.
 
-% Goal must be eventually reachable
+% Comment out the main goal for debugging
 % :- not &tel { >? goal }.
-goal.
+
+% DEBUG: Force Taxi 1 to move Right eventually
+:- not &tel { >? move(1,r) }.
 
 % =========================================================
 % 6. OUTPUT
