@@ -16,7 +16,6 @@ def generate_facts(rows, cols, grid):
     """Generates ASP facts based on the grid content."""
     facts = []
     
-    # CRITICAL FIX: Use #program always so facts exist at all time steps
     facts.append("#program always.") 
     facts.append(f"row(1..{rows}). col(1..{cols}).")
     
@@ -31,8 +30,6 @@ def generate_facts(rows, cols, grid):
                 stations.append(f"station({x},{y}).")
             elif 'a' <= char <= 'z':
                 passengers.append(f"passenger({char}).")
-                # Initial positions still go here, effectively becoming 'always' facts 
-                # but only used by the 'initial' program in taxi.lp
                 passengers.append(f"init(passenger_at({char},{x},{y})).")
             elif '1' <= char <= '9':
                 taxis.append(f"taxi({char}).")
